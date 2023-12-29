@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Children Information</title>
+    <link rel="stylesheet" href="child.css">
+</head>
+<body>
+    <h1>Enter Childrens Information</h1>
+    <form id="childForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="placeOfBirth">Place of Birth:</label>
+        <input type="text" id="placeOfBirth" name="placeOfBirth" required>
+
+        <label for="dateOfBirth">Date of Birth:</label>
+        <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+
+        <button type="button" onclick="addRow()">Add to Table</button>
+        <button type="button">Done</button>
+    </form>
+
+    <table id="childTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Place of Birth</th>
+                <th>Date of Birth</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table rows will be added dynamically -->
+        </tbody>
+    </table>
+
+    <script>
+        function addRow() {
+            var form = document.getElementById('childForm');
+            var table = document.getElementById('childTable').getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow(table.rows.length);
+            var cells = [];
+
+            for (var i = 0; i < 4; i++) {
+                cells[i] = newRow.insertCell(i);
+                cells[i].innerHTML = form.elements[i].value;
+            }
+
+            // Clear the form after adding a row
+            form.reset();
+        }
+    </script>
+
+</body>
+</html>
+
